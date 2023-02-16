@@ -1,17 +1,15 @@
 body {
-  margin: 0;
   background-color: lightslategray;
-  height: 100vh;
 }
 
 .title {
-  margin: 5% 0 0 0;
+  margin-top: 5%;
   text-align: center;
   color: azure;
 }
 
 .warning {
-  margin: 20% 0 0 0;
+  margin-top: 20%;
   text-align: center;
   color: darkred;
 }
