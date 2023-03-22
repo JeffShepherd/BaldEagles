@@ -16,7 +16,7 @@ body {
 
 
 /* canvas */
-.game-canvas {
+#canvasA {
   border: 2px solid black;
   width: 500px;
   height: 400px;
