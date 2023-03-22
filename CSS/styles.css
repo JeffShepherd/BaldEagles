@@ -1,9 +1,9 @@
+/* page layou */
 body {
   background-color: lightslategray;
 }
 
 .title {
-  margin-top: 5%;
   text-align: center;
   color: azure;
 }
@@ -12,4 +12,13 @@ body {
   margin-top: 20%;
   text-align: center;
   color: darkred;
+}
+
+
+/* canvas */
+#canvasA {
+  border: 2px solid black;
+  width: 500px;
+  height: 400px;
+  margin: auto;
 }
