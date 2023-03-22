@@ -1,19 +1,35 @@
+//all comments temporary...remove prior to project finalization
+
 //////canvas
 let canvasA = document.getElementById('canvasA')
 const context = canvasA.getContext('2d')
+
 
 //////birdimage
 const eagle = new Image()
 eagle.src = './eagle.png'
 
 
-
 //////bird coordinate values
 //bird coordinates
 let birdX = 0
 let birdY = 60
+//fall rate
 let birdVertSpeed = 0
 
+
+//////player-initiated movement
+//listeners for spacebar and clicks on canvas
+document.addEventListener('keypress', (e) => {
+  if(e.code === 'Space') {
+    addVerticalSpeed()
+  } 
+})
+canvasA.onclick = () => addVerticalSpeed()
+//function to add upward momentum
+function addVerticalSpeed() {
+  birdVertSpeed = 3
+}
 
 
 //////frame rendering
