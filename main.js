@@ -3,6 +3,7 @@
 //////canvas
 let canvasA = document.getElementById('canvasA')
 const context = canvasA.getContext('2d')
+context.fillStyle = 'lightgrey'
 
 
 //////birdimage
@@ -37,7 +38,6 @@ startGame()
 function startGame() {
   let render = 
   setInterval(() => {
-    context.fillStyle = 'lightgrey'
     context.fillRect(0,0,500,400)
     birdVertSpeed -= 0.3
     birdY -= birdVertSpeed
@@ -47,12 +47,17 @@ function startGame() {
     context.drawImage(eagle, birdX, birdY, 20*(281/233), 20)
     //check if bird hit bottom
     if(birdY > 130) {
-      birdVertSpeed = 0
-      birdY = 60
-      clearInterval(render)
-      context.fillRect(0,0,500,400)
-      context.drawImage(eagle, birdX, birdY, 20*(281/233), 20)    }
+      resetGame(render)
+    }
   }, 80)
+}
+    
+function resetGame(render) {
+  clearInterval(render)
+  birdVertSpeed = 0
+  birdY = 60
+  context.fillRect(0,0,500,400)
+  context.drawImage(eagle, birdX, birdY, 20*(281/233), 20)
 }
 
 
