@@ -1,15 +1,12 @@
 //all comments temporary...remove prior to project finalization
-
 //////canvas
 let canvasA = document.getElementById('canvasA')
 const context = canvasA.getContext('2d')
 context.fillStyle = 'lightgrey'
 
-
 //////birdimage
 const eagle = new Image()
 eagle.src = './eagle.png'
-
 
 //////bird coordinate values
 //bird coordinates
@@ -37,27 +34,26 @@ startGame()
 //////frame rendering
 function startGame() {
   let render = 
-  setInterval(() => {
-    context.fillRect(0,0,500,400)
-    birdVertSpeed -= 0.3
-    birdY -= birdVertSpeed
-    //draw image arguements are (image, x cord to place top left of image,
-    //y cord to place top left of image, width to draw image (multiply by 
-    //aspect ratio to correct display), heigth to draw image )
-    context.drawImage(eagle, birdX, birdY, 20*(281/233), 20)
-    //check if bird hit bottom
-    if(birdY > 130) {
-      resetGame(render)
-    }
-  }, 80)
+    setInterval(() => {
+      populateCanvas()
+      birdVertSpeed -= 0.3
+      birdY -= birdVertSpeed
+      //check if bird hit bottom
+      if(birdY > 130) {
+        resetGame(render)
+      }
+    }, 80)
 }
     
 function resetGame(render) {
   clearInterval(render)
   birdVertSpeed = 0
   birdY = 60
+  populateCanvas() 
+}
+
+function populateCanvas() {
   context.fillRect(0,0,500,400)
   context.drawImage(eagle, birdX, birdY, 20*(281/233), 20)
 }
-
 
