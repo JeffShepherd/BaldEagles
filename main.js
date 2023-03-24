@@ -19,10 +19,17 @@ eagle.src = './eagle.png'
 //initial population of canvas
 context.fillStyle = 'lightgrey'
 populateCanvas()
-context.font = "10px arial"
-context.fillStyle = "black"
-context.fillText("click or press space to start", 95, 75 )
+renderCanvasText('start')
 
+function renderCanvasText(scenario) {
+  context.font = "10px arial"
+  context.fillStyle = "black"
+  if(scenario === "start") {
+    context.fillText("click or press space to start", 95, 75)
+  } else if(scenario === "end") {
+    context.fillText("Game Over - click or press space to play again", 60, 75)
+  }
+}
 
 //////player-initiated movement
 //listeners for spacebar and clicks on canvas
@@ -69,11 +76,9 @@ function resetGame(render) {
   clearInterval(render)
   birdVertSpeed = 0
   birdY = 60
-  populateCanvas()
   gameActive = false
-  context.font = "10px arial"
-  context.fillStyle = "black"
-  context.fillText("Game Over - click or press space to play again", 60, 75 )
+  populateCanvas()
+  renderCanvasText('end')
 }
 
 function populateCanvas() {
