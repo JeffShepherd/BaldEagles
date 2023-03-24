@@ -1,14 +1,7 @@
 //all comments temporary...remove prior to project finalization
-//////canvas
-let canvasA = document.getElementById('canvasA')
-const context = canvasA.getContext('2d')
-context.fillStyle = 'lightgrey'
-
-//////birdimage
-const eagle = new Image()
-eagle.src = './eagle.png'
-
-//////bird coordinate values
+////global variables
+//game active boolean
+let gameActive = false
 //bird coordinates
 let birdX = 0
 let birdY = 60
@@ -16,23 +9,49 @@ let birdY = 60
 let birdVertSpeed = 0
 
 
+//////canvas and image creation
+let canvasA = document.getElementById('canvasA')
+const context = canvasA.getContext('2d')
+//birdimage
+let eagle = new Image()
+eagle.src = './eagle.png'
+//initial population of canvcas
+context.fillStyle = 'lightgrey'
+populateCanvas()
+
+
+
+
 //////player-initiated movement
 //listeners for spacebar and clicks on canvas
-document.addEventListener('keypress', (e) => {
-  if(e.code === 'Space') {
+document.addEventListener('keypress', (event) => {
+  if(!gameActive) {
+    gameActive = true
+    startGame()
+  } else if(event.code === 'Space') {
     addVerticalSpeed()
-  } 
+  }
 })
-canvasA.onclick = () => addVerticalSpeed()
+
+canvasA.onclick = () => {
+  if(gameActive) {
+    addVerticalSpeed()
+  } else {
+    gameActive = true
+    startGame()
+  }
+}
+
+
+
 //function to add upward momentum
 function addVerticalSpeed() {
   birdVertSpeed = 3
 }
 
-startGame()
-
 //////frame rendering
 function startGame() {
+  console.log('yup')
   let render = 
     setInterval(() => {
       populateCanvas()
@@ -49,7 +68,8 @@ function resetGame(render) {
   clearInterval(render)
   birdVertSpeed = 0
   birdY = 60
-  populateCanvas() 
+  populateCanvas()
+  gameActive = false
 }
 
 function populateCanvas() {
