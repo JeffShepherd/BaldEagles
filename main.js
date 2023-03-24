@@ -15,10 +15,13 @@ const context = canvasA.getContext('2d')
 //birdimage
 let eagle = new Image()
 eagle.src = './eagle.png'
-//initial population of canvcas
+//initial population of canvas
 context.fillStyle = 'lightgrey'
 populateCanvas()
 
+context.font = "10px arial"
+context.fillStyle = "black"
+context.fillText("click or press space to start", 95, 75 )
 
 
 
@@ -51,7 +54,6 @@ function addVerticalSpeed() {
 
 //////frame rendering
 function startGame() {
-  console.log('yup')
   let render = 
     setInterval(() => {
       populateCanvas()
@@ -73,6 +75,7 @@ function resetGame(render) {
 }
 
 function populateCanvas() {
+  context.fillStyle = 'lightgrey'
   context.fillRect(0,0,500,400)
   context.drawImage(eagle, birdX, birdY, 20*(281/233), 20)
 }
