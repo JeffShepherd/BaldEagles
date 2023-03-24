@@ -15,14 +15,13 @@ const context = canvasA.getContext('2d')
 //birdimage
 let eagle = new Image()
 eagle.src = './eagle.png'
+
 //initial population of canvas
 context.fillStyle = 'lightgrey'
 populateCanvas()
-
 context.font = "10px arial"
 context.fillStyle = "black"
 context.fillText("click or press space to start", 95, 75 )
-
 
 
 //////player-initiated movement
@@ -72,6 +71,9 @@ function resetGame(render) {
   birdY = 60
   populateCanvas()
   gameActive = false
+  context.font = "10px arial"
+  context.fillStyle = "black"
+  context.fillText("Game Over - click or press space to play again", 60, 75 )
 }
 
 function populateCanvas() {
